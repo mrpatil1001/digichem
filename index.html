@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry Department</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+@font-face{
+  font-family:'Canterbury';
+  src:url('C:\Users\ADMIN\Desktop\digichem\canterbury.zip') format('truetype');
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);color:#ffffff;overflow-x:hidden}
+
+/* HEADER */
+header{display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);position:sticky;top:0;z-index:1000}
+.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:600;animation:fadeDown 1s ease}
+.logo span{font-family:'Canterbury','Times new roman' ;letter-spacing:1px}
+.logo img{height:40px;width:auto;border-radius:5px}
+nav{display:flex;gap:20px}
+nav a{color:#fff;text-decoration:none;position:relative}
+nav a::after{content:'';position:absolute;width:0;height:2px;background:#00f7ff;left:0;bottom:-4px;transition:0.3s}
+nav a:hover::after{width:100%}
+
+.menu{display:none;flex-direction:column;cursor:pointer}
+.menu div{width:25px;height:3px;background:#fff;margin:4px;transition:0.3s}
+
+@media(max-width:768px){
+nav{display:none;position:absolute;top:60px;right:20px;background:rgba(255,255,255,0.1);flex-direction:column;padding:15px;border-radius:10px;animation:fadeIn 0.5s ease}
+nav.active{display:flex}
+.menu{display:flex}
+}
+
+/* VIDEO HERO */
+.video-section{position:relative;height:80vh;overflow:hidden}
+.bg-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+.video-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:#fff;animation:fadeUp 1.2s ease}
+.video-overlay h1{font-size:2.5rem;margin-bottom:10px}
+.video-overlay p{opacity:0.8}
+
+/* HERO (fallback) */
+.hero{padding:100px 20px;text-align:center;animation:fadeUp 1.2s ease}
+.hero h1{font-size:2.5rem;margin-bottom:10px}
+.hero p{opacity:0.8}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;padding:20px}
+.card{background:rgba(255,255,255,0.1);backdrop-filter:blur(15px);border-radius:15px;padding:20px;text-align:center;transform:translateY(50px);opacity:0;transition:0.6s}
+.card.show{transform:translateY(0);opacity:1}
+.card:hover{transform:scale(1.05)}
+.card img{width:100%;border-radius:10px;height:200px;object-fit:cover}
+
+/* FOOTER */
+footer{text-align:center;padding:20px;background:rgba(255,255,255,0.1);margin-top:20px;animation:fadeUp 1s ease}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">
+<img src="images\download.png" alt="logo">
+<img src="images\uni">
+<span></span>
+</div>
+<div class="menu" onclick="toggleMenu()">
+<div></div><div></div><div></div>
+</div>
+<nav id="nav">
+<a href="index.html">Home</a>
+<a href="faculty.html">Faculty</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<!-- VIDEO SECTION -->
+<section class="video-section">
+<video autoplay muted loop playsinline class="bg-video">
+<source src="video\197483-905015011_medium.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+</section>
+
+<section class="hero">
+<h1>Welcome to Department of Chemistry</h1>
+<p>Exploring molecules, reactions, and innovations</p>
+</section>
+
+<section class="cards">
+<div class="card">
+<img src="https://source.unsplash.com/300x200/?lab"/>
+<h3>Research Labs</h3>
+<p>Advanced chemical research facilities</p>
+</div>
+<div class="card">
+<img src="https://source.unsplash.com/300x200/?chemistry"/>
+<h3>Courses</h3>
+<p>Undergraduate & postgraduate programs</p>
+</div>
+<div class="card">
+<img src="https://source.unsplash.com/300x200/?science"/>
+<h3>Innovation</h3>
+<p>Cutting-edge discoveries and projects</p>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Chemistry Department</p>
+</footer>
+
+<script>
+function toggleMenu(){document.getElementById('nav').classList.toggle('active');}
+
+// SCROLL ANIMATION
+const cards=document.querySelectorAll('.card');
+window.addEventListener('scroll',()=>{
+const trigger=window.innerHeight*0.85;
+cards.forEach(card=>{
+const top=card.getBoundingClientRect().top;
+if(top<trigger){card.classList.add('show');}
+});
+});
+</script>
+
+</body>
+</html>
